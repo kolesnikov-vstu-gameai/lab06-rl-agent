@@ -1,0 +1,43 @@
+# Лабораторная работа № 6. Обучение мини-RL агента в игровой среде
+
+Дисциплина «Игровой искусственный интеллект» · Максимум **15 баллов** (+5 за задание со звёздочкой)
+
+**Студент:** ФИО, группа · **Вариант стека:** … · **Видео:** <ссылка> · **Отчёт:** `docs/report.md` → PDF
+
+## Стек
+
+Python · gymnasium ≥ 0.29 · stable-baselines3 · TensorBoard
+
+## Что нужно сдать
+
+- [ ] Агент выше порога среды (CartPole ≥ 450, LunarLander ≥ 200)
+- [ ] Сравнительный график обучения 2 алгоритмов
+- [ ] Видео поведения агента (5 эпизодов)
+- [ ] Отчёт PDF 5–7 стр.: MDP, гиперпараметры, кривые
+
+Полное задание, критерии оценки и типичные ошибки — в методических указаниях (ЛР № 6).
+
+## Структура
+
+```
+configs/ppo.yaml, dqn.yaml   гиперпараметры (меняйте здесь, не в коде)
+src/lab06/train.py           обучение одного алгоритма → runs/<algo>/ (TensorBoard) + models/
+src/lab06/evaluate.py        оценка на 20 эпизодах → results/eval.json
+src/lab06/record.py          запись 5 эпизодов в видео (results/videos/)
+src/lab06/plot.py            сравнительный график кривых обучения
+```
+
+```bash
+pip install -e ".[dev]"
+python -m lab06.train --config configs/ppo.yaml
+python -m lab06.train --config configs/dqn.yaml
+python -m lab06.evaluate --algo ppo && python -m lab06.plot
+tensorboard --logdir runs
+```
+
+## Как сдавать
+
+1. Работайте в этом репозитории, коммитьте по шагам (`step-1`, `step-2` …) — история коммитов учитывается.
+2. Отчёт пишите в `docs/report.md`, экспортируйте в PDF в `docs/report.pdf` (Times New Roman 12, 1,5, 5–7 стр.).
+3. Видео — на YouTube/Диск, ссылку в README и в отчёт. Файлы видео в git не кладём.
+4. Готовую работу отметьте тегом `git tag v1.0 && git push --tags` и создайте Release.

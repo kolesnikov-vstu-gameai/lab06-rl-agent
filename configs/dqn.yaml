@@ -1,0 +1,10 @@
+algo: dqn
+env: CartPole-v1
+total_timesteps: 100000
+seed: 42
+policy: MlpPolicy
+hyperparams:
+  learning_rate: 0.001
+  buffer_size: 50000
+  exploration_fraction: 0.2
+  gamma: 0.99
