@@ -28,7 +28,7 @@ src/lab06/plot.py            сравнительный график кривы�
 ```
 
 ```bash
-pip install -e ".[dev]"
+pip install -r requirements.txt   # или: make install (все команды: make help)
 python -m lab06.train --config configs/ppo.yaml
 python -m lab06.train --config configs/dqn.yaml
 python -m lab06.evaluate --algo ppo && python -m lab06.plot
